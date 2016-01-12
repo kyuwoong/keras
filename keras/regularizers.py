@@ -25,6 +25,9 @@ class WeightRegularizer(Regularizer):
         self.p = p
 
     def __call__(self, loss):
+        """
+        Add regularization term to loss
+        """
         loss += K.sum(K.abs(self.p)) * self.l1
         loss += K.sum(K.square(self.p)) * self.l2
         return loss

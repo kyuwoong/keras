@@ -42,6 +42,9 @@ class GaussianNoise(MaskedLayer):
         base_config = super(GaussianNoise, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
+class GaussianNoiseForTest(GaussianNoise):
+    def get_output(self, train=False):
+        return super(GaussianNoiseForTest, self).get_output(train=True)
 
 class GaussianDropout(MaskedLayer):
     '''Apply to the input an multiplicative one-centred gaussian noise
